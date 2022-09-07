@@ -13,12 +13,17 @@
     border: 0.5px solid #000;
     width: 3.5em; 
     height: 3.5em; 
+    
 }
 
 .chess-board .light { 
     background: #ffffff; 
+    /* background-image: url("./queen_black.png");
+    background-size: cover; */
 }
 
 .chess-board .dark { 
     background: #779455; 
+    /* background-image: url("./queen_black.png");
+    background-size: cover; */
 }
