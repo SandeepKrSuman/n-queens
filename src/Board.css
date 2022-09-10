@@ -27,3 +27,8 @@
     /* background-image: url("./queen_black.png");
     background-size: cover; */
 }
+
+.showqueen {
+    background-image: url("./queen_black.png");
+    background-size: cover;
+}
