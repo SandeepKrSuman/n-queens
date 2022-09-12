@@ -1,8 +1,8 @@
 import "./FormN.css";
 
-export default function FormN() {
+export default function FormN(props) {
   function handleSubmit(event) {
-    console.log("N = ", event.target.nval.value);
+    props.setN(parseInt(event.target.nval.value));
     event.preventDefault();
   }
 
