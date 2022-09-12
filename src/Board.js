@@ -1,5 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./Board.css";
+import FormN from "./FormN";
 
 function constructBoard(board, N, ld, rd, cl, col) {
   if (col >= N) return true;
@@ -24,7 +25,13 @@ function constructBoard(board, N, ld, rd, cl, col) {
 }
 
 export default function ChessBoard() {
-  const n = 4;
+  const n = 8;
+
+  const [chessBoard, setChessBoard] = useState(
+    Array(n)
+      .fill(Array(n).fill(0))
+      .map((a) => a.slice())
+  );
 
   useEffect(() => {
     let N = n;
@@ -42,43 +49,78 @@ export default function ChessBoard() {
       return;
     }
 
-    console.log(board);
+    setChessBoard(board);
   }, [n]);
 
   return (
-    <table className="chess-board">
-      <tbody>
-        {Array(n)
-          .fill(null)
-          .map((value, index) => (
-            <tr key={index}>
-              {Array(n)
-                .fill(null)
-                .map((val, ind) => (
-                  <td
-                    className={
-                      n % 2 === 0
-                        ? index % 2 === 0
+    <>
+      <FormN />
+      <table className="chess-board">
+        <tbody>
+          {Array(n)
+            .fill(null)
+            .map((value, index) => (
+              <tr key={index}>
+                {Array(n)
+                  .fill(null)
+                  .map((val, ind) => (
+                    <td
+                      className={
+                        n % 2 === 0
+                          ? index % 2 === 0
+                            ? ind % 2 === 0
+                              ? `${
+                                  chessBoard[index][ind] === 1
+                                    ? "light showqueen"
+                                    : "light"
+                                }`
+                              : `${
+                                  chessBoard[index][ind] === 1
+                                    ? "dark showqueen"
+                                    : "dark"
+                                }`
+                            : ind % 2 === 0
+                            ? `${
+                                chessBoard[index][ind] === 1
+                                  ? "dark showqueen"
+                                  : "dark"
+                              }`
+                            : `${
+                                chessBoard[index][ind] === 1
+                                  ? "light showqueen"
+                                  : "light"
+                              }`
+                          : index % 2 === 0
                           ? ind % 2 === 0
-                            ? "light"
-                            : "dark"
+                            ? `${
+                                chessBoard[index][ind] === 1
+                                  ? "dark showqueen"
+                                  : "dark"
+                              }`
+                            : `${
+                                chessBoard[index][ind] === 1
+                                  ? "light showqueen"
+                                  : "light"
+                              }`
                           : ind % 2 === 0
-                          ? "dark"
-                          : "light"
-                        : index % 2 === 0
-                        ? ind % 2 === 0
-                          ? "dark"
-                          : "light"
-                        : ind % 2 === 0
-                        ? "light"
-                        : "dark"
-                    }
-                    key={ind}
-                  />
-                ))}
-            </tr>
-          ))}
-      </tbody>
-    </table>
+                          ? `${
+                              chessBoard[index][ind] === 1
+                                ? "light showqueen"
+                                : "light"
+                            }`
+                          : `${
+                              chessBoard[index][ind] === 1
+                                ? "dark showqueen"
+                                : "dark"
+                            }`
+                      }
+                      key={ind}
+                    />
+                  ))}
+              </tr>
+            ))}
+        </tbody>
+      </table>
+    </>
   );
 }
