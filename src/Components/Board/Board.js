@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./Board.css";
-import FormN from "./FormN";
+import FormN from "../FormN/FormN";
 
 function constructBoard(board, N, ld, rd, cl, col) {
   if (col >= N) return true;
@@ -25,7 +25,7 @@ function constructBoard(board, N, ld, rd, cl, col) {
 }
 
 function showAlert(n) {
-  if (!alert(`No Solution for ${n} - Queen!!`)) {
+  if (!alert(`No Solution for ${n} - Queens!!`)) {
     window.location.reload();
   }
 }

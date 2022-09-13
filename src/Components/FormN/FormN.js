@@ -22,7 +22,7 @@ export default function FormN(props) {
           <option value="1">N = 1</option>
         </select>
         <br />
-        <input className="submitbtn" type="submit" value="Setup Board" />
+        <input className="submitbtn" type="submit" value="Place Queens" />
       </form>
     </div>
   );
